@@ -17,7 +17,9 @@
     --dark-800: #4d5066;
     --dark-900: #393a4c;
 
+    --go: #484b6a;
 
+    --list-bg: #24263b; 
 }
 
 
@@ -104,7 +106,7 @@ button {
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-    light-space: nowrap;
+    white-space: nowrap;
     /* added line */
     border: 0;
 }
@@ -114,18 +116,18 @@ button {
 /* my code starts here */
 
 html{
-    background-color: black;
+    background-color: #181824;
     padding: 2rem 0;
 }
 
 body{
-    font-size: 15px;
+    font-size: 14px;
     font-family: 'Josefin Sans', sans-serif;
 }
 
 @media (min-width: 1050px) {
     html{
-        padding: 3.5rem 0;
+        padding: 4.2rem 0;
     }
 
     body{
@@ -133,10 +135,14 @@ body{
     }
 }
 
+::placeholder{
+    color: var(--light-800);
+}
+
 .container{
-    max-width: 550px;
+    max-width: 600px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1.7rem;
 }
 
 .bg-image-wrapper{
@@ -158,7 +164,8 @@ body{
 
 .main-content__heading-wrapper{
     display: flex;
-    place-content: center space-between;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 2rem;
 }
 
@@ -171,15 +178,26 @@ body{
 
 .theme-icon{
     object-fit: contain;
-    width: 1.3rem;
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+@media(min-width: 1050px) {
+    .bg-image-wrapper{
+        height: 300px;
+    }
+    .main-content__heading{
+        font-size: 2.6rem;
+        letter-spacing: .9rem;
+    }
 }
 
 
 
 .item-wrap{
-    background-color: var(--dark-900);
-    padding: .8rem 1.5rem;
-    border-bottom: 1px solid var(--light-800);
+    background-color: var(--list-bg);
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--dark-800);
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -191,6 +209,22 @@ body{
 
 .item-wrap input[type="text"], .item-wrap p{
     margin-left: 0rem;
+    padding: 0 .4rem;
+    color: var(--dark-300);
+}
+
+.item-wrap p.checked{
+    color: var(--light-800);
+    text-decoration: line-through;
+    text-decoration-color: var(--light-800);
+}
+
+.item-wrap p:hover{
+    cursor: pointer;
+}
+
+.add-todo-wrapper{
+    margin-bottom: 1.7rem;
 }
 
 .add-todo{
@@ -198,25 +232,16 @@ body{
 }
 
 .add-todo input[type="text"]{
-    padding: .3rem;
     width: 100%;
-    background-color: var(--dark-900);
+    background-color: var(--list-bg);
     border: none;
-    color: var(--dark-300);
 }
 
 .add-todo input[type="text"]:focus-visible{
     outline: none;
 }
 
-::placeholder{
-    color: var(--light-800);
-}
-
-/* input{
-    font-size: .8rem;
-} */
-
+/* custom checkbox style */
 .checkbox-wrapper{
     position: relative;
     height: 25px;
@@ -262,4 +287,13 @@ body{
 .checkbox-wrapper input:checked ~ span{
     background: var(--CheckBackground);
     border: none;
+}
+
+
+.list-content .item-wrap:first-child{
+    border-radius: .3rem .3rem 0 0 ;
+}
+
+.list-content .item-wrap:last-child{
+    border-radius: 0 0 .3rem .3rem;
 }
