@@ -6,15 +6,6 @@ $(document).ready(function () {
     const additemBtn = $("#add-item-btn");
     const additemInput = $("#add-item-input");
 
-
-    checkboxLabel.click(function() {
-        $(this).parent().next().toggleClass("checked");
-    })
-
-    checkboxPara.click(function() {
-        $(this).prev().children("span").click();
-    })
-
     /* function for addding new list item */
     additemBtn.click(function() {
         let inputText = additemInput.val();
@@ -25,8 +16,8 @@ $(document).ready(function () {
             let itemWrap = $("<div></div>").addClass("item-wrap");
             let checkboxLabel = $("<label></label>").addClass("checkbox-wrapper label-control");
             let checkbox = $("<input></input>").attr("type", "checkbox");
-            let checkboxSpan = $("<span></span>").addClass("checkmark");
-            let itemPara = $("<p></p>").text(inputText);
+            let checkboxSpan = $("<span></span>").addClass("checkmark").attr("onclick", "checkToggle(this)");
+            let itemPara = $("<p></p>").text(inputText).attr("onclick", "checkPara(this)");
 
             checkboxLabel.append(checkbox, checkboxSpan);
 
@@ -46,3 +37,11 @@ $(document).ready(function () {
 
     
 });
+
+function checkToggle(ele) {
+    ele.parentElement.nextElementSibling.classList.toggle("checked");
+}
+
+function checkPara(ele){
+    ele.previousElementSibling.children[1].click();
+}
