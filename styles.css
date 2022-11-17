@@ -135,14 +135,21 @@ body{
     }
 }
 
-::placeholder{
-    color: var(--light-800);
-}
-
+/* utility class */
 .container{
     max-width: 600px;
     margin: 0 auto;
     padding: 0 1.7rem;
+}
+
+.flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+::placeholder{
+    color: var(--light-800);
 }
 
 .bg-image-wrapper{
@@ -229,6 +236,20 @@ body{
 
 .add-todo{
     border-radius: .3rem;
+}
+
+.add-list-item{
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+    border-radius: 50%;
+    border: 1px solid var(--light-800);
+    color: var(--light-100);
+}
+
+.add-list-item:hover{
+    background: var(--CheckBackground);
+    border: none;
 }
 
 .add-todo input[type="text"]{

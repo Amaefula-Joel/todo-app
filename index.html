@@ -44,20 +44,19 @@
 
       <div class="list-wrapper | container">
 
+        <!-- input for adding new list items -->
         <div class="add-todo-wrapper">
-          <div class="add-todo | item-wrap">
-            <label class="checkbox-wrapper">
-              <input type="checkbox" checked>
-              <span class="checkmark"></span>
-            </label>
+          <div class="add-todo | item-wrap" web-theme="dark">
+            <button id="add-item-btn" class="add-list-item | flex-center"><i>+</i></button>
 
-            <input type="text" placeholder="Create a new todo">
+            <input id="add-item-input" type="text" placeholder="Create a new todo">
           </div>
         </div>
 
-        <div class="list-content">
+        <!-- to do list content wrapper -->
+        <div id="list-content" class="list-content">
           
-          <div class="item-wrap">
+          <div class="item-wrap" web-theme="dark">
             <label class="checkbox-wrapper label-control">
               <input type="checkbox">
               <span class="checkmark"></span>
@@ -66,7 +65,7 @@
             <p>Complete online Javascript course</p>
           </div>
           
-          <div class="item-wrap">
+          <div class="item-wrap" web-theme="dark">
             <label class="checkbox-wrapper label-control">
               <input type="checkbox">
               <span class="checkmark"></span>
@@ -75,7 +74,7 @@
             <p>Complete online Javascript course</p>
           </div>
           
-          <div class="item-wrap">
+          <div class="item-wrap" web-theme="dark">
             <label class="checkbox-wrapper label-control">
               <input type="checkbox">
               <span class="checkmark"></span>
