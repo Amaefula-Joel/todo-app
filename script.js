@@ -109,9 +109,14 @@ function setTheme(theme){
 function getTheme() { 
     if ( !(localStorage.getItem("userTheme") === null)) {
         body.attr("web-theme", localStorage.getItem("userTheme"));
-    } else{
-        localStorage.setItem("userTheme", body.attr("web-theme"));
-    }
 
-    themeBtn.click();
+        /* changes the icon theme icon to match the stored theme */
+        if (localStorage.getItem("userTheme") === "light") {
+            $("#theme-btn img").attr("src", "images/icon-sun.svg");
+        } else {
+            $("#theme-btn img").attr("src", "images/icon-moon.svg");
+        }
+    } else{
+        localStorage.setItem("userTheme", body.attr("web-theme")); 
+    }
 }
