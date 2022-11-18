@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A solution for the to do list frontendmentor challenge">
   <!-- displays site properly based on user's device -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,27 +28,29 @@
   </style>
 </head>
 
-<body>
+<body web-theme="light" onresize="bgChange()" onload="getTheme(), bgChange()">
 
   <main>
 
     <div class="bg-image-wrapper">
-      <img class="bg-image" src="images/bg-desktop-dark.jpg" alt="image background dark theme">
+      <img class="bg-image" src="images/bg-desktop-light.jpg" alt="image background dark theme">
     </div>
 
     <section class="main-content">
       <div class="main-content__heading-wrapper | container">
         <h1 class="main-content__heading">TODO</h1>
 
-        <img class="theme-icon" src="images/icon-sun.svg" alt="icon moon">
+        <button id="theme-btn" class="theme-btn">
+          <img class="theme-icon" src="images/icon-sun.svg" alt="icon moon">
+        </button>
       </div>
 
       <div class="list-wrapper | container">
 
         <!-- input for adding new list items -->
         <div class="add-todo-wrapper">
-          <div class="add-todo | item-wrap" web-theme="dark">
-            <button id="add-item-btn" class="add-list-item | flex-center"><i>+</i></button>
+          <div class="add-todo | item-wrap">
+            <button id="add-item-btn" class="add-todo-btn | flex-center"><i>+</i></button>
 
             <input id="add-item-input" type="text" placeholder="Create a new todo">
           </div>
@@ -56,7 +59,7 @@
         <!-- to do list content wrapper -->
         <div id="list-content" class="list-content">
           
-          <div class="item-wrap" web-theme="dark">
+          <div class="item-wrap" todo-status="active">
             <label class="checkbox-wrapper label-control">
               <input type="checkbox">
               <span class="checkmark" onclick="checkToggle(this)"></span>
@@ -65,7 +68,7 @@
             <p onclick="checkPara(this)">Complete online Javascript course</p>
           </div>
           
-          <div class="item-wrap" web-theme="dark">
+          <div class="item-wrap" todo-status="active">
             <label class="checkbox-wrapper label-control">
               <input type="checkbox">
               <span class="checkmark" onclick="checkToggle(this)"></span>
@@ -74,7 +77,7 @@
             <p onclick="checkPara(this)">Complete online Javascript course</p>
           </div>
           
-          <div class="item-wrap" web-theme="dark">
+          <div class="item-wrap" todo-status="active">
             <label class="checkbox-wrapper label-control">
               <input type="checkbox">
               <span class="checkmark" onclick="checkToggle(this)"></span>

@@ -13,11 +13,14 @@
 
 
     /* dark theme */
+    
     --dark-300: #cacde8;
-    --dark-800: #4d5066;
-    --dark-900: #393a4c;
+    --dark-700: #4d5066;
+    --dark-800: #38394d;
+    --dark-900: #25273c;
 
-    --go: #484b6a;
+    --rld: #e4e5f1;
+    --rld: #fafafa;
 
     --list-bg: #24263b; 
 }
@@ -114,42 +117,38 @@ button {
 
 
 /* my code starts here */
-
-html{
-    background-color: #181824;
-    padding: 2rem 0;
-}
-
 body{
     font-size: 14px;
     font-family: 'Josefin Sans', sans-serif;
+    background-color: #181824;
+    padding: 2rem 1.7rem;
+}
+
+body[web-theme="light"]{
+    background-color: var(--light-200);
 }
 
 @media (min-width: 1050px) {
-    html{
-        padding: 4.2rem 0;
-    }
-
     body{
         font-size: 18px;
+        padding: 4.2rem 1.7rem;
     }
+}
+
+::placeholder{
+    color: var(--light-800);
 }
 
 /* utility class */
 .container{
-    max-width: 600px;
+    max-width: 573px;
     margin: 0 auto;
-    padding: 0 1.7rem;
 }
 
 .flex-center{
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-::placeholder{
-    color: var(--light-800);
 }
 
 .bg-image-wrapper{
@@ -179,8 +178,12 @@ body{
 .main-content__heading{
     color: var(--light-100);
     font-size: 1.8rem;
-    font-weight: bold;
+    font-weight: 700;
     letter-spacing: .5rem;
+}
+
+.theme-btn:hover{
+    cursor: pointer;
 }
 
 .theme-icon{
@@ -200,14 +203,26 @@ body{
 }
 
 
+.list-wrapper{
+    box-shadow: 0 0 10px var(--dark-800);
+}
+
+body[web-theme="light"] .list-wrapper{
+    box-shadow: 0 0 10px black;
+}
 
 .item-wrap{
-    background-color: var(--list-bg);
     padding: 1.2rem 1.5rem;
-    border-bottom: 1px solid var(--dark-800);
+    border-bottom: 1px solid var(--dark-700);
+    background-color: var(--list-bg);
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+body[web-theme="light"] .item-wrap{
+    background-color: var(--light-200);
+    border-bottom: 1px solid var(--light-400);
 }
 
 .item-wrap:last-child{
@@ -220,16 +235,6 @@ body{
     color: var(--dark-300);
 }
 
-.item-wrap p.checked{
-    color: var(--light-800);
-    text-decoration: line-through;
-    text-decoration-color: var(--light-800);
-}
-
-.item-wrap p:hover{
-    cursor: pointer;
-}
-
 .add-todo-wrapper{
     margin-bottom: 1.7rem;
 }
@@ -238,7 +243,7 @@ body{
     border-radius: .3rem;
 }
 
-.add-list-item{
+.add-todo-btn{
     height: 25px;
     width: 25px;
     display: inline-block;
@@ -247,20 +252,64 @@ body{
     color: var(--light-100);
 }
 
-.add-list-item:hover{
+.add-todo-btn:hover{
     background: var(--CheckBackground);
     border: none;
 }
 
 .add-todo input[type="text"]{
     width: 100%;
-    background-color: var(--list-bg);
+    background-color: transparent;
     border: none;
 }
 
 .add-todo input[type="text"]:focus-visible{
     outline: none;
 }
+
+/* changes the theme of the texts */
+body[web-theme="light"] .item-wrap input[type="text"], body[web-theme="light"] .item-wrap p{
+    color: var(--dark-900);
+}
+
+.list-content .item-wrap:first-child{
+    border-radius: .3rem .3rem 0 0 ;
+}
+
+.list-content .item-wrap:last-child{
+    border-radius: 0 0 .3rem .3rem;
+}
+
+.item-wrap p{
+    width: 100%;
+    /* disable selecting this element */
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+}
+
+.item-wrap p::first-letter{
+    text-transform: capitalize;
+}
+
+.item-wrap p.checked{
+    color: var(--light-800);
+    text-decoration: line-through;
+    text-decoration-color: var(--light-800);
+}
+
+body[web-theme="light"] .item-wrap p.checked{
+    color: var(--dark-300);
+    text-decoration-color: var(--dark-300);
+}
+
+.item-wrap p:hover{
+    cursor: pointer;
+}
+
+
 
 /* custom checkbox style */
 .checkbox-wrapper{
@@ -286,6 +335,10 @@ body{
     border: 1px solid var(--light-800);
 }
 
+body[web-theme="light"] span{
+    border: 1px solid var(--dark-300);
+}
+
 .checkbox-wrapper span:hover{
     border-color: var(--primary-100);
     cursor: pointer;
@@ -308,13 +361,4 @@ body{
 .checkbox-wrapper input:checked ~ span{
     background: var(--CheckBackground);
     border: none;
-}
-
-
-.list-content .item-wrap:first-child{
-    border-radius: .3rem .3rem 0 0 ;
-}
-
-.list-content .item-wrap:last-child{
-    border-radius: 0 0 .3rem .3rem;
 }
