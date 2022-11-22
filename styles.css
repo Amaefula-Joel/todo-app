@@ -19,10 +19,11 @@
     --dark-800: #38394d;
     --dark-900: #25273c;
 
-    --rld: #e4e5f1;
-    --rld: #fafafa;
+    --list-bg: #24263b;
 
-    --list-bg: #24263b; 
+
+    --list-padding-md: 1.2rem 1.5rem;
+    --list-padding-sm: .7rem 1rem;
 }
 
 
@@ -118,30 +119,29 @@ button {
 
 /* my code starts here */
 body{
-    font-size: 14px;
+    font-size: 11px;
     font-family: 'Josefin Sans', sans-serif;
     background-color: #181824;
-    padding: 2rem 1.7rem;
 }
 
 body[web-theme="light"]{
     background-color: var(--light-200);
 }
 
-@media (min-width: 1050px) {
-    body{
-        font-size: 18px;
-        padding: 4.2rem 1.7rem;
-    }
+main{
+    padding: 2.5rem 1.5rem;
+    position: relative;
+    margin: auto;
+    max-width: 1438px;
 }
 
 ::placeholder{
-    color: var(--light-800);
+    color: var(--light-400);
 }
 
 /* utility class */
 .container{
-    max-width: 573px;
+    max-width: 538px;
     margin: 0 auto;
 }
 
@@ -155,6 +155,7 @@ body[web-theme="light"]{
     position: absolute;
     inset: 0 0 auto;
     height: 200px;
+    width: 100%;
 }
 
 .bg-image{
@@ -166,6 +167,7 @@ body[web-theme="light"]{
 .main-content{
     position: relative;
     z-index: 100;
+    margin-bottom: 30px;
 }
 
 .main-content__heading-wrapper{
@@ -177,10 +179,11 @@ body[web-theme="light"]{
 
 .main-content__heading{
     color: var(--light-100);
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 700;
-    letter-spacing: .5rem;
+    letter-spacing: .6rem;
 }
+
 
 .theme-btn:hover{
     cursor: pointer;
@@ -188,55 +191,66 @@ body[web-theme="light"]{
 
 .theme-icon{
     object-fit: contain;
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 1.2rem;
+    height: 1.2rem;
 }
 
-@media(min-width: 1050px) {
-    .bg-image-wrapper{
-        height: 300px;
+
+@media (min-width: 1050px) {
+    body{
+        font-size: 18px;
     }
+
+    main{
+        padding: 4.2rem 0;
+    }
+
     .main-content__heading{
-        font-size: 2.6rem;
-        letter-spacing: .9rem;
+        font-size: 1.8rem;
+        letter-spacing: .5rem;
+    }
+
+    .theme-icon{
+        width: 1.6rem;
+        height: 1.6rem;
     }
 }
 
-
-.list-wrapper{
-    box-shadow: 0 0 10px var(--dark-800);
+.shadow{
+    box-shadow: 0 25px 20px 0px #121315;
 }
 
-body[web-theme="light"] .list-wrapper{
-    box-shadow: 0 0 10px black;
+body[web-theme="light"] .shadow{
+    box-shadow: 0 25px 20px 0px var(--light-300);
 }
 
 .item-wrap{
-    padding: 1.2rem 1.5rem;
-    border-bottom: 1px solid var(--dark-700);
+    padding: var(--list-padding-sm);
     background-color: var(--list-bg);
     display: flex;
     align-items: center;
-    gap: 1rem;
+    justify-content: space-between;
+    gap: .7rem;
+}
+
+@media (min-width: 1050px) {
+    .item-wrap{
+        padding: var(--list-padding-md);
+        gap: 1rem;
+    }
 }
 
 body[web-theme="light"] .item-wrap{
     background-color: var(--light-200);
-    border-bottom: 1px solid var(--light-400);
-}
-
-.item-wrap:last-child{
-    border-bottom: none;
 }
 
 .item-wrap input[type="text"], .item-wrap p{
     margin-left: 0rem;
-    padding: 0 .4rem;
     color: var(--dark-300);
 }
 
 .add-todo-wrapper{
-    margin-bottom: 1.7rem;
+    margin-bottom: 1rem;
 }
 
 .add-todo{
@@ -246,15 +260,19 @@ body[web-theme="light"] .item-wrap{
 .add-todo-btn{
     height: 25px;
     width: 25px;
-    display: inline-block;
     border-radius: 50%;
-    border: 1px solid var(--light-800);
+    border: 1px solid var(--dark-800);
     color: var(--light-100);
+}
+
+body[web-theme="light"] .add-todo-btn{
+    border: 1px solid var(--light-300);
 }
 
 .add-todo-btn:hover{
     background: var(--CheckBackground);
     border: none;
+    cursor: pointer;
 }
 
 .add-todo input[type="text"]{
@@ -267,20 +285,39 @@ body[web-theme="light"] .item-wrap{
     outline: none;
 }
 
-/* changes the theme of the texts */
+@media(min-width: 1050px) {
+    .bg-image-wrapper{
+        height: 300px;
+    }
+    .main-content__heading{
+        font-size: 2.5rem;
+        letter-spacing: .9rem;
+    }
+
+    .add-todo-wrapper{
+        margin-bottom: 1.3rem;
+    }
+}
+
+
 body[web-theme="light"] .item-wrap input[type="text"], body[web-theme="light"] .item-wrap p{
     color: var(--dark-900);
+}
+
+/* style the div wrapping the todo list items */
+.list-content .item-wrap{
+    border-bottom: 1px solid var(--dark-800);
+}
+
+body[web-theme="light"] .list-content .item-wrap{
+    border-bottom: 1px solid var(--light-300);
 }
 
 .list-content .item-wrap:first-child{
     border-radius: .3rem .3rem 0 0 ;
 }
 
-.list-content .item-wrap:last-child{
-    border-radius: 0 0 .3rem .3rem;
-}
-
-.item-wrap p{
+.list-content .item-wrap p{
     width: 100%;
     /* disable selecting this element */
     user-select: none;
@@ -290,25 +327,109 @@ body[web-theme="light"] .item-wrap input[type="text"], body[web-theme="light"] .
     -khtml-user-select: none;
 }
 
-.item-wrap p::first-letter{
+.list-content .item-wrap p::first-letter{
     text-transform: capitalize;
 }
 
-.item-wrap p.checked{
-    color: var(--light-800);
+.list-content .item-wrap p.checked{
+    color: var(--light-400);
     text-decoration: line-through;
-    text-decoration-color: var(--light-800);
+    text-decoration-color: var(--light-400);
 }
 
-body[web-theme="light"] .item-wrap p.checked{
+body[web-theme="light"] .list-content .item-wrap p.checked{
     color: var(--dark-300);
     text-decoration-color: var(--dark-300);
 }
 
-.item-wrap p:hover{
+.cancel-item{
+    opacity: 1;
+}
+
+.list-content .item-wrap p:hover{
     cursor: pointer;
 }
 
+@media(min-width: 1050px) {
+    .cancel-item{
+        opacity: 0;
+    }
+    
+    .item-wrap:hover .cancel-item{
+        opacity: 1;
+    }        
+}
+
+.cancel-item:hover {
+    cursor: pointer;
+}
+
+
+/* list item footers */
+@media (max-width: 1050px) {
+    .list-footer{
+        margin-bottom: 100px;
+    }
+    
+    .list-footer .item-footer{
+        position: relative;
+    }
+
+    .list-footer .list-filter{
+        position: absolute;
+        top: calc(100% + 1.5rem);
+        left: 0;
+        background-color: var(--list-bg);
+        width: 100%;
+        text-align: center;
+        padding: .8rem 1.2rem;
+        border-radius: 0.3rem;
+        box-shadow: 0 25px 20px 0px #121315;
+    }
+    
+    body[web-theme="light"] .list-footer .list-filter{
+        box-shadow: 0 25px 20px 0px var(--light-300);
+        background-color: var(--light-200);
+    }
+}
+
+.list-footer .item-footer{
+    padding: .8rem 1.2rem;
+    border-radius: 0 0 .3rem .3rem;
+}
+
+.list-footer .item-footer *{
+    color: var(--light-400);
+    font-size: 11px;
+}
+
+
+
+.list-footer .list-filter button{
+    padding: 0 .4rem;
+}
+
+.list-footer button:hover{
+    cursor: pointer;
+}
+
+.list-footer .list-filter button.active{
+    color: var(--primary-100);
+}
+
+.list-footer button:not(.active):hover{
+    color: var(--light-100);
+}
+
+body[web-theme="light"] button:not(.active):hover{
+    color: var(--dark-900);
+}
+
+@media (min-width: 1050px) {
+    .list-footer .item-footer *{
+        font-size: 14px;
+    }
+}
 
 
 /* custom checkbox style */
@@ -324,18 +445,18 @@ body[web-theme="light"] .item-wrap p.checked{
 }
 
 .checkbox-wrapper span{
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
     display: inline-block;
     position: absolute;
     top: 50%;
     transform: translatey(-50%);
     left: 0;
     border-radius: 50%;
-    border: 1px solid var(--light-800);
+    border: 2px solid var(--dark-800);
 }
 
-body[web-theme="light"] span{
+body[web-theme="light"] .checkbox-wrapper span{
     border: 1px solid var(--dark-300);
 }
 
@@ -361,4 +482,27 @@ body[web-theme="light"] span{
 .checkbox-wrapper input:checked ~ span{
     background: var(--CheckBackground);
     border: none;
+}
+
+@media (min-width: 1050px) {
+    .checkbox-wrapper span{
+        width: 25px;
+        height: 25px;
+    }
+}
+
+
+.attribution {
+    position: relative;
+    font-size: 13px;
+    text-align: center;
+    color: var(--light-200);
+}
+
+body[web-theme="light"] .attribution{
+    color: var(--dark-800);
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
 }

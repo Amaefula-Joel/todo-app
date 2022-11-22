@@ -17,14 +17,7 @@
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
-    .attribution {
-      font-size: 11px;
-      text-align: center;
-    }
 
-    .attribution a {
-      color: hsl(228, 45%, 44%);
-    }
   </style>
 </head>
 
@@ -33,6 +26,7 @@
   <main>
 
     <div class="bg-image-wrapper">
+      <span class="visually-hidden">theme idicator icon</span>
       <img class="bg-image" src="images/bg-desktop-light.jpg" alt="image background dark theme">
     </div>
 
@@ -50,40 +44,33 @@
         <!-- input for adding new list items -->
         <div class="add-todo-wrapper">
           <div class="add-todo | item-wrap">
-            <button id="add-item-btn" class="add-todo-btn | flex-center"><i>+</i></button>
+            <button id="add-item-btn" class="add-todo-btn"> <span class="visually-hidden"> add new to do list</span> </button>
 
-            <input id="add-item-input" type="text" placeholder="Create a new todo">
+            <input id="add-item-input" type="text" placeholder="Create a new todo" name="newItem" autocomplete="off">
           </div>
         </div>
 
-        <!-- to do list content wrapper -->
-        <div id="list-content" class="list-content">
-          
-          <div class="item-wrap" todo-status="active">
-            <label class="checkbox-wrapper label-control">
-              <input type="checkbox">
-              <span class="checkmark" onclick="checkToggle(this)"></span>
-            </label>
+        <div class="shadow">
+          <!-- to do list content wrapper -->
+          <div id="list-content" class="list-content">
 
-            <p onclick="checkPara(this)">Complete online Javascript course</p>
           </div>
-          
-          <div class="item-wrap" todo-status="active">
-            <label class="checkbox-wrapper label-control">
-              <input type="checkbox">
-              <span class="checkmark" onclick="checkToggle(this)"></span>
-            </label>
 
-            <p onclick="checkPara(this)">Complete online Javascript course</p>
-          </div>
-          
-          <div class="item-wrap" todo-status="active">
-            <label class="checkbox-wrapper label-control">
-              <input type="checkbox">
-              <span class="checkmark" onclick="checkToggle(this)"></span>
-            </label>
+          <div class="list-footer">
 
-            <p onclick="checkPara(this)">Complete online Javascript course</p>
+            <div class="item-footer | item-wrap">
+              <p><span id="item-count">0</span> items left</p>
+
+              <div class="list-filter">
+                <button onclick="itemFilter(this, 'all')" class="active">All</button>
+
+                <button onclick="itemFilter(this, 'active')">Active</button>
+
+                <button onclick="itemFilter(this, 'completed')">Completed</button>
+              </div>
+
+              <button onclick="clearCompleted()">Clear Completed</button>
+            </div>
           </div>
 
         </div>
@@ -93,28 +80,26 @@
 
     </section>
 
+    <footer class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="#">Joel Amaefula</a>.
+    </footer>
+
   </main>
 
 
-  <!-- Add dynamic number --> <!-- items left
+  <!-- Add dynamic number -->
+  <!-- items left
 
-  All
-  Active
-  Completed
-
-  Clear Completed
 
   Drag and drop to reorder list
+  -->
 
-  <footer class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="#">Your Name Here</a>.
-  </footer> -->
 
   <script src="jquery-3.6.0.min.js"></script>
   <script src="script.js"></script>
 
-  
+
 </body>
 
 </html>
